@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Load Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(0, 0, 0, 1);
+            color: white;
+            font-size: 2.5em;
+            padding: 10px 0;
+            z-index: 1000;
+            position: relative; 
+        }
+        .nav {
+            margin-top: 20px;
+            position: relative; 
+        }
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 1.2em;
+        }
+        .content {
+            padding-top: 50px;
+        }
+        .upload-container {
+            margin-top: 50px;
+        }
+
+        .image-container {
+            margin-top: 20px;
+            position: relative; 
+        }
+        .image-container img {
+            max-width: 600px;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        Cygnus Server
+    </div>
+
+    <div class="nav">
+        <a href="{{ url_for('main') }}">Home</a>
+        <a href="{{ url_for('analysis') }}">Analysis</a>
+        <a href="{{ url_for('data_load') }}">Data Load</a>
+    </div>
+
+    <div class="content">
+        <div class="upload-container">
+            <h2>Upload Image</h2>
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+        {% if uploaded_file_url %}
+        <div class="image-container">
+            <img src="{{ uploaded_file_url }}" alt="Uploaded Image">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(0, 0, 0, 1);
+            color: white;
+            font-size: 2.5em;
+            padding: 10px 0;
+            z-index: 1000;
+            position: relative; 
+        }
+        .nav {
+            margin-top: 20px;
+            position: relative; 
+        }
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 1.2em;
+        }
+        .content {
+            padding-top: 50px;
+        }
+        .image-container {
+            display: inline-block;
+            max-width: 600px;
+            max-height: 90%%;
+            width: auto;
+            height: auto;
+            position: relative;
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+        }
+        .buttons {
+            position: relative;
+            top: 40px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        .buttons button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+    </style>
+    <script>
+        function changeImage(imageFile) {
+            window.location.href = "/analysis?image=" + imageFile;
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        Cygnus Server
+    </div>
+    <div class="nav">
+        <a href="{{ url_for('main') }}">Home</a>
+        <a href="{{ url_for('analysis') }}">Analysis</a>
+        <a href="{{ url_for('data_load') }}">Data Load</a>
+    </div>
+    <div class="content">
+        <div class="image-container">
+            <img id="main-image" src="{{ url_for('static', filename=image) }}" alt="Image">
+            <div class="buttons">
+                <button onclick="changeImage('img/cookie.png')"> Cookie </button>
+                <button onclick="changeImage('img/CSB_logo.png')"> CSB logo </button>
+                <button onclick="changeImage('img/MAX_SEA_8colors.png')">  EV image </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
